@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-xl-12">
+        <img class="img-fluid img-thumbnail" [src]="recipe.imagePath" [alt]="recipe.name" width="250" height="250" appZoom>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>{{ recipe.name}}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group" role="group" appDropdown>
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" aria-expanded="false">
+                    Manage
+                </button>
+                <div class="dropdown-menu show" aria-labelledby="btnGroupDrop1">
+                    <a href="#" class="dropdown-item">To Shopping List</a>
+                    <a href="#" class="dropdown-item">Edit Recipe</a>
+                    <a href="#" class="dropdown-item">Manage Recipe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        {{recipe.description}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        Ingredients
+    </div>
+</div>
