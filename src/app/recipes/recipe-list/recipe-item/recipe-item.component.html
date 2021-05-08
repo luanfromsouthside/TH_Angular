@@ -1,4 +1,7 @@
-<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" (click)="selectItemRecipe(recipe)">
+<a 
+style="cursor: pointer;"
+class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+[routerLink]="index" routerLinkActive="active">
     <div>
             <h4 class="list-group-item-heading">
                 {{ recipe.name }}
