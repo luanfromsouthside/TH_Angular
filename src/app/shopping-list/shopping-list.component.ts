@@ -14,4 +14,8 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
     this.ingredients = this.shoppingListService.getIngredients();
   }
+
+  onEditItem(index) {
+    this.shoppingListService.startedEditing.emit(index);
+  }
 }
