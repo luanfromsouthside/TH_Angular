@@ -1,1 +1,110 @@
-<p>recipe-edit works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button 
+                        type="submit" 
+                        class="btn btn-success mr-1"
+                        [disabled]="!recipeForm.valid">
+                        Save
+                    </button>
+                    <button 
+                        type="button" 
+                        class="btn btn-danger"
+                        (click)="onCancel()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            mdbInput mdbValidate
+                            formControlName="name"
+                            class="form-control"
+                            [ngClass]="{'is-invalid': getConfig('name')}"
+                            >
+                        <span *ngIf="getConfig('name')">
+                            <span *ngIf="recipeForm.get('name').errors?.required" class="text-danger">
+                                Name is required
+                            </span>
+                        </span>    
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="imagePath">Image URL</label>
+                        <input
+                            type="text" i
+                            d="imagePath" 
+                            formControlName="imagePath"
+                            class="form-control"
+                            [ngClass]="{'is-invalid': getConfig('imagePath')}">
+                            <span *ngIf="getConfig('imagePath')">
+                                <span *ngIf="recipeForm.get('imagePath').errors?.required" class="text-danger">
+                                    Image path is required
+                                </span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea 
+                            type="text" 
+                            id="description" 
+                            class="form-control"
+                            formControlName="description" 
+                            rows="6"
+                            [ngClass]="{'is-invalid': getConfig('description')}"></textarea>
+                            <span *ngIf="getConfig('description')">
+                                <span *ngIf="recipeForm.get('description').errors?.required" class="text-danger">
+                                    Description is required
+                                </span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" formArrayName="ingredients">
+                    <div class="row no-gutters"
+                        *ngFor="let ingredientCtrl of controls; let i = index"
+                        [formGroupName]="i">
+                        <div class="col-sm-8">
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                formControlName="name">
+                        </div>
+                        <div class="col-sm-2">
+                            <input 
+                                type="number" 
+                                class="form-control"
+                                formControlName="amount">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn-danger">X</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button 
+                        type="button" 
+                        class="btn btn-success"
+                        (click)="onAddIngredient()">Add Ingredient</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
